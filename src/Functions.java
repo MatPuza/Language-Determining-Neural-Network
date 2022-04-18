@@ -1,16 +1,14 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Functions
 {
-   public static int[] loadLangFileIntoArray(String fileName) throws FileNotFoundException
+   public static double[] loadLangFileIntoArray(String fileName) throws FileNotFoundException
    {
-      int[] result = new int[26];
+      double[] result = new double[26];
       
       Scanner scanner = new Scanner(new File(fileName));
       String newLine;

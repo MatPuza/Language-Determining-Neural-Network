@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.OptionalInt;
 
 public class Neuron
 {
@@ -9,13 +11,13 @@ public class Neuron
    
    private String lang;
    
-   public Neuron(ArrayList<Double> weights, double alpha, double thetaChange,
+   public Neuron(ArrayList<Double> weights, double alpha, double theta, double thetaChange,
                  String lang)
    {
       this.weights = weights;
       this.alpha = alpha;
       this.thetaChange = thetaChange;
-      this.theta = 1;
+      this.theta = theta;
       this.lang = lang;
    }
    
@@ -24,21 +26,32 @@ public class Neuron
       return 1 / (1 + Math.exp(-val));
    }
    
-   private void changeWeight(int index, int correctAnswer, int neuronDecision, int cellValue)
+   private void changeWeight(int index, int correctAnswer, int neuronDecision, double cellValue)
    {
       double temp = weights.get(index);
       temp += (correctAnswer - neuronDecision) * alpha * cellValue;
-      theta -= (correctAnswer - neuronDecision) * alpha;
       weights.set(index, temp);
    }
    
-   public void checkResult(int[] letterArray, String inputLang)
+   public void sike(double[] s)
    {
+      s = normalizeInput(s);
+   
+      for(double i : s)
+      {
+         System.out.println(i);
+      }
+   }
+   
+   public void teachNeuron(double[] letterRepeatsArray, String inputLang)
+   {
+      letterRepeatsArray = normalizeInput(letterRepeatsArray);
+      
       double score = 0;
       
       int counter = 0;
       
-      for(int let : letterArray)
+      for(double let : letterRepeatsArray)
       {
          score += let * weights.get(counter);
          counter++;
@@ -50,21 +63,27 @@ public class Neuron
       
       int temp = 0;
       
-      if(score > theta) //sum >= theta
+      if(score > theta) //sum > theta
       {
-         for(int num : letterArray)
+         //Change all weights accordingly to expected result
+         for(double num : letterRepeatsArray)
          {
             changeWeight(temp, d, 1, num);
             temp++;
          }
+         
+         theta -= (d - 1) * alpha;
       }
       else
       {
-         for(int num : letterArray)
+         //Change all weights accordingly to expected result
+         for(double num : letterRepeatsArray)
          {
             changeWeight(temp, d, 0, num);
             temp++;
          }
+         
+         theta -= d * alpha;
       }
    }
    
@@ -94,6 +113,24 @@ public class Neuron
          return d == 0;
       }
    }*/
+   
+   private double[] normalizeInput(double[] input)
+   {
+      double[] result = new double[input.length];
+      
+      double max = Arrays.stream(input).max().getAsDouble();
+      double min = Arrays.stream(input).min().getAsDouble();
+      
+      int counter = 0;
+      
+      for(double i : input)
+      {
+         result[counter] = (i - min) / (max - min);
+         counter++;
+      }
+      
+      return result;
+   }
    
    public void type()
    {

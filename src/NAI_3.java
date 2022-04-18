@@ -16,6 +16,7 @@ public class NAI_3
    private static final String lang3 = "French";
    
    private static final double alpha = 0.05;
+   private static final double theta = 1;
    private static final double thetaChange = 0.01;
    
    public static void main(String[] args) throws FileNotFoundException
@@ -24,15 +25,15 @@ public class NAI_3
       German
       English
       French*/
+   
+      double[] lang1Array = Functions.loadLangFileIntoArray(lang1File);
+      double[] lang2Array = Functions.loadLangFileIntoArray(lang2File);
+      double[] lang3Array = Functions.loadLangFileIntoArray(lang3File);
       
-      int[] lang1Array = Functions.loadLangFileIntoArray(lang1File);
-      int[] lang2Array = Functions.loadLangFileIntoArray(lang2File);
-      int[] lang3Array = Functions.loadLangFileIntoArray(lang3File);
-      
-      Neuron neuronLang1 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, thetaChange, lang1);
-      Neuron neuronLang2 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, thetaChange, lang2);
-      Neuron neuronLang3 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, thetaChange, lang3);
-      
+      Neuron neuronLang1 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang1);
+      Neuron neuronLang2 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang2);
+      Neuron neuronLang3 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang3);
+      neuronLang2.sike(lang1Array);
    }
    
 }
