@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.OptionalInt;
 
 public class Neuron
 {
@@ -72,7 +71,7 @@ public class Neuron
    
    public void teachNeuron(double[] letterRepeatsArray, String inputLang)
    {
-      letterRepeatsArray = normalizeInput(letterRepeatsArray);
+      //letterRepeatsArray = normalizeInput(letterRepeatsArray);
       
       double score = countScore(letterRepeatsArray);
       

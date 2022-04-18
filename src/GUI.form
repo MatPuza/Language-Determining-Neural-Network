@@ -10,20 +10,27 @@
       <component id="bc066" class="javax.swing.JTextArea" binding="resultField">
         <constraints border-constraint="South"/>
         <properties>
+          <background color="-13158601"/>
           <editable value="false"/>
           <font size="20"/>
+          <foreground color="-1"/>
         </properties>
       </component>
       <component id="8a03a" class="javax.swing.JButton" binding="okButton">
-        <constraints border-constraint="North"/>
+        <constraints border-constraint="East"/>
         <properties>
+          <background color="-13224394"/>
+          <foreground color="-1"/>
           <text value="OK"/>
           <toolTipText value="Press OK to proceed"/>
         </properties>
       </component>
-      <component id="1e4ee" class="javax.swing.JTextField" binding="userInput">
+      <component id="e251" class="javax.swing.JTextArea" binding="userInput">
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <background color="-12829636"/>
+          <foreground color="-1"/>
+        </properties>
       </component>
     </children>
   </grid>
