@@ -4,7 +4,6 @@
  */
 
 import java.io.FileNotFoundException;
-import java.util.Random;
 
 public class NAI_3
 {
@@ -18,9 +17,9 @@ public class NAI_3
    
    private static final double alpha = 0.005;
    private static final double theta = 0.5;
-   private static final double thetaChange = 0.01;
+   private static final double thetaChange = 0.001;
    
-   private static final int amountOfTraining = 5000;
+   private static final int amountOfTraining = 1000;
    
    public static void main(String[] args) throws FileNotFoundException
    {

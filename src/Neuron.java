@@ -90,7 +90,7 @@ public class Neuron
             temp++;
          }
          
-         theta -= (d - 1) * alpha;
+         theta -= (d - 1) * thetaChange;
       }
       else
       {
@@ -101,7 +101,7 @@ public class Neuron
             temp++;
          }
          
-         theta -= d * alpha;
+         theta -= d * thetaChange;
       }
    }
    
@@ -112,14 +112,6 @@ public class Neuron
       double score = countScore(letterRepeatsArray);
       
       return getSigmoidValue(score);
-   }
-   
-   public void type()
-   {
-      for(Double weight : weights)
-      {
-         System.out.println(weight);
-      }
    }
    
 }
