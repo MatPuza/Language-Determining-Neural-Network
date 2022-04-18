@@ -3,9 +3,7 @@
  * Project 3 
  */
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class NAI_3
 {
@@ -13,43 +11,28 @@ public class NAI_3
    private static final String lang2File = "Lang2.txt";
    private static final String lang3File = "Lang3.txt";
    
+   private static final String lang1 = "German";
+   private static final String lang2 = "English";
+   private static final String lang3 = "French";
+   
+   private static final double alpha = 0.05;
+   private static final double thetaChange = 0.01;
+   
    public static void main(String[] args) throws FileNotFoundException
    {
       /*Languages used:
-   German
-   English
-   French*/
-   
-      int[] lang1Array = loadLangFileIntoArray(lang1File);
-      int[] lang2Array = loadLangFileIntoArray(lang2File);
-      int[] lang3Array = loadLangFileIntoArray(lang3File);
+      German
+      English
+      French*/
       
+      int[] lang1Array = Functions.loadLangFileIntoArray(lang1File);
+      int[] lang2Array = Functions.loadLangFileIntoArray(lang2File);
+      int[] lang3Array = Functions.loadLangFileIntoArray(lang3File);
       
-   }
-   
-   public static int[] loadLangFileIntoArray(String fileName) throws FileNotFoundException
-   {
-      int[] result = new int[26];
+      Neuron neuronLang1 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, thetaChange, lang1);
+      Neuron neuronLang2 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, thetaChange, lang2);
+      Neuron neuronLang3 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, thetaChange, lang3);
       
-      Scanner scanner = new Scanner(new File(fileName));
-      String newLine;
-      
-      while(scanner.hasNextLine())
-      {
-         newLine = scanner.nextLine().toLowerCase();
-         
-         for(char c : newLine.toCharArray())
-         {
-            //'a' to 'z'
-            if(c <= 122 && c >= 97)
-            {
-               if(result[c - 97] <= 0) result[c - 97] = 1;
-               else result[c - 97]++;
-            }
-         }
-      }
-      
-      return result;
    }
    
 }
