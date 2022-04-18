@@ -33,16 +33,6 @@ public class Neuron
       weights.set(index, temp);
    }
    
-   public void sike(double[] s)
-   {
-      s = normalizeInput(s);
-   
-      for(double i : s)
-      {
-         System.out.println(i);
-      }
-   }
-   
    public void teachNeuron(double[] letterRepeatsArray, String inputLang)
    {
       letterRepeatsArray = normalizeInput(letterRepeatsArray);

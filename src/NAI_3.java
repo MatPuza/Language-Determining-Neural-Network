@@ -19,6 +19,8 @@ public class NAI_3
    private static final double theta = 1;
    private static final double thetaChange = 0.01;
    
+   private static final int amountOfTraining = 100;
+   
    public static void main(String[] args) throws FileNotFoundException
    {
       /*Languages used:
@@ -33,7 +35,23 @@ public class NAI_3
       Neuron neuronLang1 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang1);
       Neuron neuronLang2 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang2);
       Neuron neuronLang3 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang3);
-      neuronLang2.sike(lang1Array);
+   
+      for(int i = 0 ; i < amountOfTraining ; i++)
+      {
+         neuronLang1.teachNeuron(lang1Array, lang1);
+         neuronLang1.teachNeuron(lang2Array, lang2);
+         neuronLang1.teachNeuron(lang3Array, lang3);
+         
+         neuronLang2.teachNeuron(lang1Array, lang1);
+         neuronLang2.teachNeuron(lang2Array, lang2);
+         neuronLang2.teachNeuron(lang3Array, lang3);
+         
+         neuronLang3.teachNeuron(lang1Array, lang1);
+         neuronLang3.teachNeuron(lang2Array, lang2);
+         neuronLang3.teachNeuron(lang3Array, lang3);
+      }
+      
+      
    }
    
 }
