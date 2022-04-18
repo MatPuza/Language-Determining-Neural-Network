@@ -36,6 +36,11 @@ public class NAI_3
       Neuron neuronLang2 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang2);
       Neuron neuronLang3 = new Neuron(Functions.generateWeights(lang1Array.length), alpha, theta, thetaChange, lang3);
    
+      for(double v : lang1Array)
+      {
+         System.out.println(v);
+      }
+      
       for(int i = 0 ; i < amountOfTraining ; i++)
       {
          neuronLang1.teachNeuron(lang1Array, lang1);
@@ -51,7 +56,7 @@ public class NAI_3
          neuronLang3.teachNeuron(lang3Array, lang3);
       }
       
-      
+      GUI gui = new GUI();
    }
    
 }

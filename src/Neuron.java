@@ -26,6 +26,20 @@ public class Neuron
       return 1 / (1 + Math.exp(-val));
    }
    
+   private double countScore(double[] letterRepeatsArray)
+   {
+      double result = 0;
+      int counter = 0;
+      
+      for(double let : letterRepeatsArray)
+      {
+         result += let * weights.get(counter);
+         counter++;
+      }
+      
+      return result;
+   }
+   
    private void changeWeight(int index, int correctAnswer, int neuronDecision, double cellValue)
    {
       double temp = weights.get(index);
@@ -37,15 +51,7 @@ public class Neuron
    {
       letterRepeatsArray = normalizeInput(letterRepeatsArray);
       
-      double score = 0;
-      
-      int counter = 0;
-      
-      for(double let : letterRepeatsArray)
-      {
-         score += let * weights.get(counter);
-         counter++;
-      }
+      double score = countScore(letterRepeatsArray);
       
       int d;
       if(lang.equals(inputLang)) d = 1;

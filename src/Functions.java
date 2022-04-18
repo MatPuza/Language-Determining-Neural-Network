@@ -16,15 +16,22 @@ public class Functions
       while(scanner.hasNextLine())
       {
          newLine = scanner.nextLine().toLowerCase();
-         
-         for(char c : newLine.toCharArray())
+   
+         insertLettersIntoArray(result, newLine);
+      }
+      
+      return result;
+   }
+   
+   public static double[] insertLettersIntoArray(double[] result, String input)
+   {
+      for(char c : input.toCharArray())
+      {
+         //'a' to 'z'
+         if(c <= 122 && c >= 97)
          {
-            //'a' to 'z'
-            if(c <= 122 && c >= 97)
-            {
-               if(result[c - 97] <= 0) result[c - 97] = 1;
-               else result[c - 97]++;
-            }
+            if(result[c - 97] <= 0) result[c - 97] = 1;
+            else result[c - 97]++;
          }
       }
       
