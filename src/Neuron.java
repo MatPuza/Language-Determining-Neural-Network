@@ -21,6 +21,11 @@ public class Neuron
       this.lang = lang;
    }
    
+   public String getLang()
+   {
+      return lang;
+   }
+   
    private double getSigmoidValue(double val)
    {
       return 1 / (1 + Math.exp(-val));
@@ -34,6 +39,24 @@ public class Neuron
       for(double let : letterRepeatsArray)
       {
          result += let * weights.get(counter);
+         counter++;
+      }
+      
+      return result;
+   }
+   
+   private double[] normalizeInput(double[] input)
+   {
+      double[] result = new double[input.length];
+      
+      double max = Arrays.stream(input).max().getAsDouble();
+      double min = Arrays.stream(input).min().getAsDouble();
+      
+      int counter = 0;
+      
+      for(double i : input)
+      {
+         result[counter] = (i - min) / (max - min);
          counter++;
       }
       
@@ -83,49 +106,13 @@ public class Neuron
       }
    }
    
-   /*public boolean testResult(ObjectData object)
+   public double testResult(double[] letterRepeatsArray)
    {
-      double score = 0;
+      letterRepeatsArray = normalizeInput(letterRepeatsArray);
       
-      int counter = 0;
+      double score = countScore(letterRepeatsArray);
       
-      for(Double num : object.getData())
-      {
-         score += num * weights.get(counter);
-         counter++;
-      }
-      
-      int d;
-      if(object.getObjectName().equals(aboveObject)) d = 1;
-      else d = 0;
-      
-      //if(getSigmoidValue(score) > 0.49)
-      if(score > theta)
-      {
-         return d == 1;
-      }
-      else
-      {
-         return d == 0;
-      }
-   }*/
-   
-   private double[] normalizeInput(double[] input)
-   {
-      double[] result = new double[input.length];
-      
-      double max = Arrays.stream(input).max().getAsDouble();
-      double min = Arrays.stream(input).min().getAsDouble();
-      
-      int counter = 0;
-      
-      for(double i : input)
-      {
-         result[counter] = (i - min) / (max - min);
-         counter++;
-      }
-      
-      return result;
+      return getSigmoidValue(score);
    }
    
    public void type()

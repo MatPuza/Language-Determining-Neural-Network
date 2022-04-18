@@ -15,11 +15,11 @@ public class NAI_3
    private static final String lang2 = "English";
    private static final String lang3 = "French";
    
-   private static final double alpha = 0.05;
+   private static final double alpha = 0.005;
    private static final double theta = 1;
-   private static final double thetaChange = 0.01;
+   private static final double thetaChange = 0.001;
    
-   private static final int amountOfTraining = 100;
+   private static final int amountOfTraining = 1000;
    
    public static void main(String[] args) throws FileNotFoundException
    {
@@ -56,7 +56,7 @@ public class NAI_3
          neuronLang3.teachNeuron(lang3Array, lang3);
       }
       
-      GUI gui = new GUI();
+      GUI gui = new GUI(neuronLang1, neuronLang2, neuronLang3);
    }
    
 }

@@ -9,11 +9,10 @@
     <children>
       <component id="bc066" class="javax.swing.JTextArea" binding="resultField">
         <constraints border-constraint="South"/>
-        <properties/>
-      </component>
-      <component id="1e4ee" class="javax.swing.JTextField" binding="userInput">
-        <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <editable value="false"/>
+          <font size="20"/>
+        </properties>
       </component>
       <component id="8a03a" class="javax.swing.JButton" binding="okButton">
         <constraints border-constraint="North"/>
@@ -21,6 +20,10 @@
           <text value="OK"/>
           <toolTipText value="Press OK to proceed"/>
         </properties>
+      </component>
+      <component id="1e4ee" class="javax.swing.JTextField" binding="userInput">
+        <constraints border-constraint="Center"/>
+        <properties/>
       </component>
     </children>
   </grid>
